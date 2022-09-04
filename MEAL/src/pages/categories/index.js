@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import {Loading, Error, CategoryCard} from '../../components';
 import {useFetch} from '../../hooks';
 
-export const CategoriesScreen = () => {
+export const CategoriesScreen = ({navigation}) => {
   const {data, loading, error} = useFetch('/categories.php');
 
   if (loading) {
@@ -14,11 +14,17 @@ export const CategoriesScreen = () => {
     return <Error />;
   }
 
+  const handlePress = id => {
+    navigation.navigate('Meals', {id});
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         data={data.categories}
-        renderItem={({item}) => <CategoryCard {...item} />}
+        renderItem={({item}) => (
+          <CategoryCard {...item} handlePress={handlePress} />
+        )}
         keyExtractor={item => item.idCategory}
         showsVerticalScrollIndicator={false}
       />

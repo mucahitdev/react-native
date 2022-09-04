@@ -7,16 +7,43 @@ const Stack = createNativeStackNavigator();
 
 function Router() {
   return (
-    <NavigationContainer >
+    <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Categories" component={CategoriesScreen} options={{
+        <Stack.Screen
+          name="Categories"
+          component={CategoriesScreen}
+          options={{
             headerTitleStyle: {
-                fontWeight: 'bold',
-                color: '#FFA500',
+              fontWeight: 'bold',
+              color: '#FFA500',
             },
-        }} />
-        <Stack.Screen name="Meals" component={MealsScreen} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
+            headerStyle: {
+                backgroundColor: '#fff',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Meals"
+          component={MealsScreen}
+          options={{
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#FFA500',
+            },
+            headerTintColor: '#FFA500',
+          }}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={DetailScreen}
+          options={{
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#FFA500',
+            },
+            headerTintColor: '#FFA500',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

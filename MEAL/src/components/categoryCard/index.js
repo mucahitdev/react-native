@@ -7,9 +7,14 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export const CategoryCard = ({strCategory, strCategoryThumb, id}) => {
+export const CategoryCard = ({
+  strCategory,
+  strCategoryThumb,
+  id,
+  handlePress,
+}) => {
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={() => handlePress(id)}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image source={{uri: strCategoryThumb}} style={styles.image} />
