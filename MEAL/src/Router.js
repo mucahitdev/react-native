@@ -7,9 +7,14 @@ const Stack = createNativeStackNavigator();
 
 function Router() {
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Stack.Navigator>
-        <Stack.Screen name="Categories" component={CategoriesScreen} />
+        <Stack.Screen name="Categories" component={CategoriesScreen} options={{
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                color: '#FFA500',
+            },
+        }} />
         <Stack.Screen name="Meals" component={MealsScreen} />
         <Stack.Screen name="Detail" component={DetailScreen} />
       </Stack.Navigator>
