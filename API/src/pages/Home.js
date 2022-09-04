@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import Error from '../components/Error';
 import {useAxios} from '../hooks';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const {data, loading, error} = useAxios(Config.API_URL);
 
   if (loading) {
@@ -17,11 +17,15 @@ export default function HomeScreen() {
     return <Error />;
   }
 
+  const handleClick = (id) => {
+    navigation.navigate('Details', {id});
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
-        renderItem={({item}) => <Card {...item} />}
+        renderItem={({item}) => <Card {...item} handleClick={handleClick} />}
         keyExtractor={item => item.id}
         numColumns={2}
       />

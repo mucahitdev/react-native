@@ -1,6 +1,12 @@
 import React from 'react';
 
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
 export default function Card({
   title,
@@ -9,29 +15,33 @@ export default function Card({
   category,
   image,
   rating,
+  id,
+  handleClick,
 }) {
   const titleSM = title.length > 20 ? title.substring(0, 20) + '...' : title;
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={{uri: image}} style={styles.image} />
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{titleSM}</Text>
-      </View>
-      <View style={styles.foooterContainer}>
-        <View style={styles.cardFooter}>
-          <Text style={styles.price}>${price}</Text>
-          <Text
-            style={[
-              styles.rating,
-              rating.rate > 3 ? styles.rateGreen : styles.rateRed,
-            ]}>
-            {rating.rate}
-          </Text>
+    <TouchableWithoutFeedback onPress={() => handleClick(id)}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image source={{uri: image}} style={styles.image} />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>{titleSM}</Text>
+        </View>
+        <View style={styles.foooterContainer}>
+          <View style={styles.cardFooter}>
+            <Text style={styles.price}>${price}</Text>
+            <Text
+              style={[
+                styles.rating,
+                rating.rate > 3 ? styles.rateGreen : styles.rateRed,
+              ]}>
+              {rating.rate}
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
