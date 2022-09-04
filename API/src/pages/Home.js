@@ -1,33 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, FlatList} from 'react-native';
 import Config from 'react-native-config';
 import Card from '../components/Card';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 import {useAxios} from '../hooks';
 
 export default function HomeScreen() {
   const {data, loading, error} = useAxios(Config.API_URL);
 
   if (loading) {
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
-    );
+    return <Loading />;
   }
 
   if (error) {
-    return (
-      <View style={styles.errorCont}>
-        <ActivityIndicator size="large" color="red" />
-        <Text style={styles.error}>Bir hata oluştu.</Text>
-      </View>
-    );
+    return <Error />;
   }
 
   return (
