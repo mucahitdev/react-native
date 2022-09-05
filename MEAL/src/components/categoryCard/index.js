@@ -14,7 +14,7 @@ export const CategoryCard = ({
   handlePress,
 }) => {
   return (
-    <TouchableWithoutFeedback onPress={() => handlePress(id)}>
+    <TouchableWithoutFeedback onPress={() => handlePress(strCategory)}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image source={{uri: strCategoryThumb}} style={styles.image} />

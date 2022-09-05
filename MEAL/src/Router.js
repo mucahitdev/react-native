@@ -17,21 +17,20 @@ function Router() {
               fontWeight: 'bold',
               color: '#FFA500',
             },
-            headerStyle: {
-                backgroundColor: '#fff',
-            },
+            headerTintColor: '#FFA500',
           }}
         />
         <Stack.Screen
           name="Meals"
           component={MealsScreen}
-          options={{
+          options={({route}) => ({
+            title: route.params.id + ' Meals',
             headerTitleStyle: {
               fontWeight: 'bold',
               color: '#FFA500',
             },
             headerTintColor: '#FFA500',
-          }}
+          })}
         />
         <Stack.Screen
           name="Detail"
