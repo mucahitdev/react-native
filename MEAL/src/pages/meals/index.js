@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
-import {Loading, Error} from '../../components';
+import React from 'react';
+import {View, StyleSheet, FlatList, Text} from 'react-native';
+import {Loading, Error, Card} from '../../components';
 import {useFetch} from '../../hooks';
 
 export const MealsScreen = ({navigation, route}) => {
@@ -15,19 +15,16 @@ export const MealsScreen = ({navigation, route}) => {
     return <Error />;
   }
 
-
-  // const handlePress = id => {
-  //   navigation.navigate('Meals', {id});
-  // };
+  const handlePress = id => {
+    navigation.navigate('Detail', {id});
+  };
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={data.categories}
-        renderItem={({item}) => (
-          <CategoryCard {...item} handlePress={handlePress} />
-        )}
-        keyExtractor={item => item.idCategory}
+        data={data.meals}
+        renderItem={({item}) => <Card {...item} handlePress={handlePress}/>}
+        keyExtractor={item => item.idMeal}
         showsVerticalScrollIndicator={false}
       />
     </View>
